@@ -60,10 +60,10 @@ pipeline {
             }
             post {
                 success {
-                    slackSend(channel: "#jenkins", color: "#2C953C", message: "smboard 배포가 성공하였습니다.")
+                    slackSend(channel: '#jenkins', color: 'good', message: "성공 가즈아!")
                 }
                 failure {
-                    slackSend(channel: "#jenkins", color: "#FF3232", message: "smboard 배포가 실패하였습니다.")
+                    slackSend(channel: '#jenkins', color: 'danger', message: "아이고 실패네..")
                 }
             }
         }
