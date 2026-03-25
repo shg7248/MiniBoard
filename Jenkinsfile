@@ -55,6 +55,8 @@ pipeline {
                 		chmod +x ./kubectl
             	fi
                 '''
+                sh "export KUBECONFIG=/home/hgsong/.kube/config"
+
                 sh "chmod +x ./kubectl"
 
                 sh "sed -i 's/{{VERSION}}/${BUILD_NUMBER}/g' ./kubernetes/apache2.yml"
