@@ -46,19 +46,19 @@ jobs:
       - name: Build and Push Docker Images
         run: |
           # Build
-          docker build -t redleon1/apache2_smboard:${{ github.run_number }} ./docker/apache2/
-          docker build -t redleon1/smboard_smboard:${{ github.run_number }} ./docker/smboard/
-          docker build -t redleon1/mariadb_smboard:${{ github.run_number }} ./docker/mariadb/
+          docker build -t cheonrang/apache2_smboard:${{ github.run_number }} ./docker/apache2/
+          docker build -t cheonrang/smboard_smboard:${{ github.run_number }} ./docker/smboard/
+          docker build -t cheonrang/mariadb_smboard:${{ github.run_number }} ./docker/mariadb/
           
           # Push
-          docker push redleon1/apache2_smboard:${{ github.run_number }}
-          docker push redleon1/smboard_smboard:${{ github.run_number }}
-          docker push redleon1/mariadb_smboard:${{ github.run_number }}
+          docker push cheonrang/apache2_smboard:${{ github.run_number }}
+          docker push cheonrang/smboard_smboard:${{ github.run_number }}
+          docker push cheonrang/mariadb_smboard:${{ github.run_number }}
           
           # Clean up (깃허브 호스팅 러너는 쓰고 버려지므로 사실 생략해도 됨)
-          docker image rm redleon1/apache2_smboard:${{ github.run_number }}
-          docker image rm redleon1/smboard_smboard:${{ github.run_number }}
-          docker image rm redleon1/mariadb_smboard:${{ github.run_number }}
+          docker image rm cheonrang/apache2_smboard:${{ github.run_number }}
+          docker image rm cheonrang/smboard_smboard:${{ github.run_number }}
+          docker image rm cheonrang/mariadb_smboard:${{ github.run_number }}
 
       
       # 6. Kubernetes Deploy (원격 클러스터 접속 설정)
@@ -87,7 +87,7 @@ jobs:
           status: custom
           custom_payload: |
             {
-              "channel": "#it교육",
+              "channel": "#jenkins",
               "text": "✅ smboard 배포가 성공하였습니다."
             }
         env:
@@ -101,7 +101,7 @@ jobs:
           status: custom
           custom_payload: |
             {
-              "channel": "#it교육",
+              "channel": "#jenkins",
               "text": "❌ smboard 배포가 실패하였습니다."
             }
         env:
